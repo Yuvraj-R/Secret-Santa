@@ -12,6 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// middleware: use assignmentRoutes for routing
 app.use("/api/assignments", assignmentRoutes);
 
 // connect to db
