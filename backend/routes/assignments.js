@@ -9,18 +9,18 @@ const {
 const router = express.Router();
 
 // GET all Assignments
-router.get("/", getAssignments());
+router.get("/", getAssignments);
 
 // GET a single Assignment
-router.get("/:id", getAssignment());
+router.get("/:id", getAssignment);
 
 // POST a Assignment
-router.post("/", createAssignment());
+router.post("/", createAssignment);
 
 // DELETE a Assignment
-router.delete("/:id", deleteAssignment());
+router.delete("/:id", deleteAssignment);
 
 // UPDATE a Assignment
-router.patch("/:id", updateAssignment());
+router.patch("/:id", updateAssignment);
 
 module.exports = router;

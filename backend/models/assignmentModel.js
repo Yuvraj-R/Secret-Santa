@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const pairingSchema = new Schema({
+const assignmentSchema = new Schema({
   from: {
     type: String,
     required: true,
@@ -12,4 +12,4 @@ const pairingSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Pairing", pairingSchema);
+module.exports = mongoose.model("Assignment", assignmentSchema);

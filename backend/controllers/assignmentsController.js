@@ -1,21 +1,28 @@
-const Pairing = require("../models/assignmentModel");
+const Assignment = require("../models/assignmentModel");
 const mongoose = require("mongoose");
 
-// GET all pairings
-const getPairings = async (req, res) => {
-  const pairings = await Pairing.find();
-  res.status(400).json(pairings);
+// GET all Assignment
+const getAssignments = async (req, res) => {
+  const assignments = await Assignment.find();
+  res.status(400).json(assignments);
 };
 
-// GET a single pairing
-const getPairing = async (req, res) => {
+// GET a single Assignment
+const getAssignment = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such pairing" });
+    return res.status(404).json({ error: "No such assignment" });
   }
-  const pairing = await Pairing.findById(id);
-  if (!pairing) {
-    return res.status(404).json({ error: "No such pairing" });
+  const assignment = await Assignment.findById(id);
+  if (!assignment) {
+    return res.status(404).json({ error: "No such assignment" });
   }
-  res.status(200).json({ pairing });
+  res.status(200).json({ assignment });
+};
+
+// Need to add post, delete, and patch
+
+module.exports = {
+  getAssignments,
+  getAssignment,
 };

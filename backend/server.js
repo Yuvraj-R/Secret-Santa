@@ -1,4 +1,5 @@
-import "./loadEnvironment";
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const assignmentRoutes = require("./routes/assignments");
