@@ -5,8 +5,11 @@ const {
   createAssignment,
   deleteAssignment,
   updateAssignment,
-} = require("../controllers/assignmentsController.js");
+} = require("../controllers/basicAssignmentsController.js");
+const { generateAssignments } = require("../controllers/generateAssignmentsController.js");
 const router = express.Router();
+
+// DB routes:
 
 // GET all Assignments
 router.get("/", getAssignments);
@@ -15,12 +18,15 @@ router.get("/", getAssignments);
 router.get("/:id", getAssignment);
 
 // POST a Assignment
-router.post("/", createAssignment);
+router.post("/create", createAssignment);
 
 // DELETE a Assignment
 router.delete("/:id", deleteAssignment);
 
 // UPDATE a Assignment
 router.patch("/:id", updateAssignment);
+
+// Other routes:
+router.post("/generate", generateAssignments);
 
 module.exports = router;
