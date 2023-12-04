@@ -3,46 +3,40 @@ const mongoose = require("mongoose");
 
 const generateAssignments = async (req, res) => {
   const { namesList } = req.body;
-  if (!namesList) {
-    res.status(400).json({
-      error: "No list of names provided",
-    });
-    if (!namesList.isArray()) {
-      res.status(400).json({
-        error: "Body was not of array format",
-      });
-    }
-    namesList.every((element) => {
-      if (!typeof element === "string") {
-        res.status(400).json({
-          error: "Array does not contain only strings",
-        });
-      }
+
+  // Validate names list upfront
+  if (!namesList || !Array.isArray(namesList)) {
+    return res.status(400).json({
+      error: "Invalid list of names provided",
     });
   }
 
-  // Shuffle names randomly
-  const shuffledNames = namesList.slice().sort(() => Math.random() - 0.5);
+  const errors = [];
 
-  // Assign recipients
+  // Shuffle names and assign recipients
+  const shuffledNames = namesList.slice().sort(() => Math.random() - 0.5);
   const assignments = shuffledNames.map((from, index) => {
     const recipientIndex = (index + 1) % shuffledNames.length;
     const to = shuffledNames[recipientIndex];
     return { to, from };
   });
 
+  // Attempt to create each assignment
   const createdAssignments = [];
-
   for (const assignment of assignments) {
     try {
       const createdAssignment = await Assignment.create(assignment);
       createdAssignments.push(createdAssignment);
     } catch (error) {
-      return res.status(400).json({ error: error.message });
+      errors.push(error.message);
     }
   }
 
-  // Send a single response after all assignments are created
+  // Check for any errors and send a single response
+  if (errors.length > 0) {
+    return res.status(400).json({ error: errors.join(", ") });
+  }
+
   res.status(200).json(createdAssignments);
 };
 

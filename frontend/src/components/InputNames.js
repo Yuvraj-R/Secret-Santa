@@ -25,21 +25,25 @@ export default function InputNames(){
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch("/api/generate", {
+        const namesList = {
+          namesList: names
+        }
+
+        const response = await fetch("/api/assignments/generate", {
             method: 'POST',
-            body: names,
+            body: JSON.stringify(namesList),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
 
-        //const json = await response.json()
+        const json = await response.json()
 
     if (!response.ok) {
-      //setError(json.error)
+      setError(json.error)
     }
     if (response.ok) {
-        //console.log(json)
+        console.log(json)
     }
 
     }
