@@ -63,7 +63,7 @@ code {
   align-self: center;
   justify-content: center;
   width: 35%;
-  padding: 15px;
+  padding: 40px 20px;
   border-radius: 20px; /* Creates a circular border */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -79,12 +79,67 @@ code {
   font-family: InputLight;
 }
 
-.input-form .inputs {
+.inputs {
   display: grid;
   margin-top: 1%;
 }
 
-.input-form .form-controls {
+.form-submit {
   display: flex;
   justify-content: center;
+}
+
+.name-input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  height: 30%;
+  font-size: 0.9rem;
+}
+
+.input-label {
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-size: 1rem;
+  color: rgb(197, 130, 139);
+}
+
+.form-controls button {
+  margin-top: 1%;
+  width: 49%;
+  height: 2rem;
+  background-color: rgb(197, 130, 139);
+  border-radius: 15px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  color: white;
+  font-size: 0.8rem;
+  border-width: 0px;
+}
+
+.add-participant-button {
+  margin-right: 0.75%;
+}
+.clear-inputs-button {
+  margin-left: 0.75%;
+}
+
+.form-submit {
+  margin-top: 3%;
+  height: 2rem;
+  background-color: rgb(197, 130, 139);
+  border-radius: 15px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-submit input {
+  color: white; /* Set the text color to black */
+  background-color: transparent; /* Set the background color to transparent */
+  border: none; /* Remove the border */
+  font-size: 0.8rem;
 }

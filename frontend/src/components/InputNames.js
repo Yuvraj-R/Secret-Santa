@@ -5,7 +5,7 @@ const React = require('react')
 export default function InputNames(){
     const [names, setNames] = useState([]);
     const [error, setError] = useState(null);
-    const [numInputs, setNumInputs] = useState(5);
+    const [numInputs, setNumInputs] = useState(6);
 
     const inputRefs = useRef([]);
     inputRefs.current[0] = React.createRef();
@@ -16,9 +16,10 @@ export default function InputNames(){
 
         inputElements.push(
             <input
+            className="name-input"
             key = {index}
             ref={inputRefs.current[index]}
-            placeholder={`Participant ${index+1}`}
+            placeholder={`Participant ${index}`}
             onChange={(event) => {handleInputChange(index, event.target.value)}}>
             </input>
         )
@@ -74,20 +75,25 @@ export default function InputNames(){
           <h3>Input Participant Names</h3>
           <p>Spread the holiday magic with our awesome Secret Santa generator. Easily plan your gift exchange and let the festive fun begin!</p>
           <div className="inputs">
-          <input
-            ref={inputRefs.current[0]}
-            placeholder={`Your Name`}
-            onChange={(event) => {handleInputChange(0, event.target.value)}}>
+            <h5 className="input-label">Your Name:</h5>
+            <input
+              className="name-input"
+              ref={inputRefs.current[0]}
+              placeholder={`Your Name`}
+              onChange={(event) => {handleInputChange(0, event.target.value)}}>
             </input>
-          {inputElements}
+            <h5 className="input-label">Other Participants:</h5>
+            {inputElements}
+            <div className="form-controls">
+              <button className="add-participant-button" type="button" onClick={addInput}>
+                Add Participant
+             </button>
+             <button className="clear-inputs-button"type="button" onClick={clearInputs}>
+               Clear
+             </button>
+            </div>
           </div>
-          <div className="form-controls">
-          <button type="button" onClick={clearInputs}>
-              Clear
-            </button>
-            <button type="button" onClick={addInput}>
-              Add Participant
-            </button>
+          <div className="form-submit">
             <input type="submit" />
           </div>
         </form>
