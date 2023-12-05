@@ -1,5 +1,43 @@
+@font-face {
+  font-family: ChristmasFont;
+  src: url("../public/ChristmasFont.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Input;
+  src: url("../public/Input.otf") format("opentype");
+}
+
+@font-face {
+  font-family: InputLight;
+  src: url("../public/InputLight.otf") format("opentype");
+}
+
+:root {
+  --primary: #faf7f1;
+    background-image: url(../public/background.jpeg);
+    background-size: cover;
+
+}
+
+header {
+  background: rgb(255, 254, 250);
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header a {
+  color: #333;
+  text-decoration: none;
+  font-family: ChristmasFont;
+  font-size: 1.5rem;
+}
+
 body {
   margin: 0;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +48,43 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.input-names{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.input-form {
+  background-color: white;
+  display: grid;
+  align-self: center;
+  justify-content: center;
+  width: 35%;
+  padding: 15px;
+  border-radius: 20px; /* Creates a circular border */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.input-form h3 {
+  font-size: 2rem;
+  font-family: Input;
+  margin-bottom: 5px;
+}
+
+.input-form p {
+  font-family: InputLight;
+}
+
+.input-form .inputs {
+  display: grid;
+  margin-top: 1%;
+}
+
+.input-form .form-controls {
+  display: flex;
+  justify-content: center;
 }
