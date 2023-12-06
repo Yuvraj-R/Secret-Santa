@@ -62,7 +62,7 @@ code {
   display: grid;
   align-self: center;
   justify-content: center;
-  width: 50%;
+  width: 70%;
   padding: 40px 20px;
   border-radius: 20px; /* Creates a circular border */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
