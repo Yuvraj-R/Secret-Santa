@@ -7,6 +7,8 @@ const {
   updateAssignment,
 } = require("../controllers/basicAssignmentsController.js");
 const { generateAssignments } = require("../controllers/generateAssignmentsController.js");
+const { sendEmailFacilitator } = require("../controllers/sendEmailController.js")
+
 const router = express.Router();
 
 // DB routes:
@@ -28,5 +30,7 @@ router.patch("/:id", updateAssignment);
 
 // Other routes:
 router.post("/generate", generateAssignments);
+
+router.post("/send-emails", sendEmailFacilitator);
 
 module.exports = router;

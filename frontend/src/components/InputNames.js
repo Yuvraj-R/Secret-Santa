@@ -3,7 +3,7 @@ import { useRef } from "react";
 import InputPair from "./InputPair";
 const React = require('react')
 
-export default function InputNames(){
+export default function InputNames( {onSubmit} ){
 
   const handleNameInputChange = async (index, value) => {
     const updatedNames = [...names];
@@ -45,30 +45,9 @@ export default function InputNames(){
         )
         }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        const namesList = {
-          namesList: names
-        }
-
-        const response = await fetch("/api/assignments/generate", {
-            method: 'POST',
-            body: JSON.stringify(namesList),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        const json = await response.json()
-
-    if (!response.ok) {
-      setError(json.error)
-    }
-    if (response.ok) {
-        console.log(json)
-    }
-
+    const handleSubmitTransfer = async (event) => {
+      // add a check to ensure that no required fields are empty before attempting to submit
+      onSubmit(event, names, emails, setError);
     }
 
     const addInput = () => {
@@ -122,7 +101,7 @@ export default function InputNames(){
               onChange={(event) => {setMessage(event.target.value)}}></textarea>
             </div>
           </div>
-          <div className="form-submit" onClick={handleSubmit}>
+          <div className="form-submit" onClick={handleSubmitTransfer}>
             <input type="submit" />
           </div>
         </form>
