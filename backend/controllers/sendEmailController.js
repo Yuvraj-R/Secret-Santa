@@ -2,14 +2,23 @@ const sendEmail = require("./sendEmail")
 
 const sendEmailFacilitator = async (req, res) => {
     // emailTemplates should be an array of {to, emailTo} objects
-    const { to, subject, message, emailTemplates} = req.body;
+    const { subject, additionalMessage, emailTemplates, organizerName} = req.body;
 
     // note message is optional
-    if (!to || !subject || !emailTemplates){
+    if (!subject || !emailTemplates || !organizerName){
         return res.status(400).json({
             error: "One or more sendEmailFacilitator() fields is missing",
           });
     }
+
+    emailTemplates.forEach(async (element) => {
+        const { email, to } = element;
+        const message = "Your Secret Santa Assignment is: " + to + ". Organized by: " + organizerName + ".";
+        if(additionalMessage){
+            message += " Message from organizer: " + additionalMessage;
+        }
+        const response = await sendEmail(email, subject, message)
+    });
 
     /*
     For each emailTemplate, call sendEmail(emailTo, "Your Secret Santa Assignment", message)

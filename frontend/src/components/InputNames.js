@@ -47,7 +47,7 @@ export default function InputNames( {onSubmit} ){
 
     const handleSubmitTransfer = async (event) => {
       // add a check to ensure that no required fields are empty before attempting to submit
-      onSubmit(event, names, emails, setError);
+      onSubmit(event, names, emails, message, names[0], setError);
     }
 
     const addInput = () => {
@@ -70,17 +70,19 @@ export default function InputNames( {onSubmit} ){
 
 
     return (
-        <form className="input-form">
+        <form className="input-form" onSubmit = {handleSubmitTransfer}>
           <h3>Input Participant Names</h3>
           <p>Spread the holiday magic with our awesome Secret Santa generator. Easily plan your gift exchange and let the festive fun begin!</p>
           <div className="inputs">
-            <h5 className="input-label">Your Name:</h5>
-            <input
-              className="name-input"
-              ref={nameRefs.current[0]}
-              placeholder={`Your Name`}
-              onChange={(event) => {handleNameInputChange(0, event.target.value)}}>
-            </input>
+            <h5 className="input-label">Your Information:</h5>
+            <InputPair
+              nameRefs={nameRefs}
+              emailRefs= {emailRefs}
+              key = {0}
+              Index = {0}
+              onNameChange = {handleNameInputChange}
+              onEmailChange = {handleEmailInputChange}
+            ></InputPair>
             <h5 className="input-other-label">Other Participants:</h5>
             {inputElements}
             <div className="form-controls">

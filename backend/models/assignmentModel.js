@@ -12,7 +12,7 @@ const assignmentSchema = new Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: false }
 );
 
 module.exports = mongoose.model("Assignment", assignmentSchema);

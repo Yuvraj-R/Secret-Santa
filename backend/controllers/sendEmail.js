@@ -2,19 +2,19 @@ require("dotenv").config();
 
 const nodemailer = require("nodemailer")
 
-const sendEmail = async (to, subject, message) => {
+const sendEmail = async (emailTo, subject, message) => {
     var transporter = nodemailer.createTransport({
-        host: "sandbox.smtp.mailtrap.io",
-        port: 2525,
-        auth: {
-          user: process.env.MAILTRAP_USERNAME,
-          pass: process.env.MAILTRAP_PASSWORD
-        }
-      });
+      host: "sandbox.smtp.mailtrap.io",
+      port: 2525,
+      auth: {
+        user: process.env.MAILTRAP_USERNAME,
+        pass: process.env.MAILTRAP_PASSWORD
+      }
+    });
 
       let info = await transporter.sendMail({
         from: '"Secret Santa"', 
-        to: to,
+        to: emailTo,
         subject: subject, 
         text: message,
       });

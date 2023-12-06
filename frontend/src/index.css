@@ -131,7 +131,7 @@ code {
 .input-other-label {
   text-align: left;
   margin-left: 10px;
-  margin-top: 2%;
+  margin-top: 4%;
   margin-bottom: 1%;
   font-size: 1rem;
   color: rgb(197, 130, 139);
@@ -197,6 +197,16 @@ code {
   background-color: transparent; /* Set the background color to transparent */
   border: none; /* Remove the border */
   font-size: 0.8rem;
+}
+
+.submitted {
+  background-color: white;
+  padding: 20px 20px;
+  width: 35%;
+  margin: 40px auto;
+  border-radius: 20px; /* Creates a circular border */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .footer {
