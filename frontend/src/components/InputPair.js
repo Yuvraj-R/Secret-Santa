@@ -1,6 +1,6 @@
 export default function InputPair( {Index, nameRefs, emailRefs, onNameChange, onEmailChange} ){
     let namePlaceHolder = `Participant ${Index}`;
-    let emailPlaceHolder = `Participant ${Index}'s email address`;
+    let emailPlaceHolder = `Email Address`;
     if (Index === 0){
         namePlaceHolder = "Your Name"
         emailPlaceHolder = "Your Email Address"
