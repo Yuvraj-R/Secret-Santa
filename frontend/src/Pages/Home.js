@@ -4,8 +4,9 @@ export default function Home(){
     return (
       <div className="home">
         <div className = "input-names">
-        <InputNames></InputNames>
+          <InputNames></InputNames>
         </div>
+        <div className="footer"></div>
       </div>
       //<AssignmentsDisplay><AssignmnentsDisplay/>
     );
