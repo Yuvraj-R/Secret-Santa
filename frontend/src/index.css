@@ -1,21 +1,21 @@
 @font-face {
   font-family: ChristmasFont;
-  src: url("../public/ChristmasFont.otf") format("opentype");
+  src: url("https://s3.amazonaws.com/secret-santa-resources/public/ChristmasFont.otf") format("opentype");
 }
 
 @font-face {
   font-family: Input;
-  src: url("../public/Input.otf") format("opentype");
+  src: url("https://s3.amazonaws.com/secret-santa-resources/public/Input.otf") format("opentype");
 }
 
 @font-face {
   font-family: InputLight;
-  src: url("../public/InputLight.otf") format("opentype");
+  src: url("https://s3.amazonaws.com/secret-santa-resources/public/InputLight.otf") format("opentype");
 }
 
 :root {
   --primary: #faf7f1;
-    background-image: url(../public/background.jpeg);
+    background-image: url(https://s3.amazonaws.com/secret-santa-resources/public/background.jpeg);
     background-size: cover;
 
 }
