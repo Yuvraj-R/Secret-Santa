@@ -13,6 +13,14 @@ const sendEmail = async (emailTo, subject, message) => {
       },
     });
 
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Server is ready to take our messages");
+      }
+    });
+
     const info = await transporter.sendMail({
       from: '"Secret Santa" <santa.generator2023@gmail.com>',
       to: emailTo,
