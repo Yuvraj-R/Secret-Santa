@@ -14,7 +14,7 @@ const sendEmail = async (emailTo, subject, message) => {
     });
 
     const info = await transporter.sendMail({
-      from: '"Secret Santa" <santa.generator2023@live.smtp.mailtrap.io>',
+      from: '"Secret Santa" <santa.generator2023@gmail.com>',
       to: emailTo,
       subject: subject,
       text: message,
