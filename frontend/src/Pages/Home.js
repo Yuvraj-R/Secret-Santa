@@ -29,7 +29,8 @@ export default function Home(){
           body: JSON.stringify(namesList),
           headers: {
               'Content-Type': 'application/json'
-          }
+          },
+          agent: new (require('https')).Agent({ rejectUnauthorized: false })
       })
 
       const json = await generateResponse.json()
@@ -64,7 +65,8 @@ export default function Home(){
           body: JSON.stringify(body),
           headers: {
             'Content-Type': 'application/json'
-          }
+          },
+          agent: new (require('https')).Agent({ rejectUnauthorized: false })
         })
       }
     }
