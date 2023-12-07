@@ -24,7 +24,7 @@ export default function Home(){
         namesList: names
       }
 
-      const generateResponse = await fetch("https://api.secret-santa-generator.net:4000/api/assignments/generate", {
+      const generateResponse = await fetch("https://3.140.216.191:4000/api/assignments/generate", {
           method: 'POST',
           body: JSON.stringify(namesList),
           headers: {
@@ -59,7 +59,7 @@ export default function Home(){
           organizerName: organizerName
         }
 
-        const emailResponse = await fetch("https://api.secret-santa-generator.net:4000/api/assignments/send-emails", {
+        const emailResponse = await fetch("https://3.140.216.191:4000/api/assignments/send-emails", {
           method: 'POST',
           body: JSON.stringify(body),
           headers: {
