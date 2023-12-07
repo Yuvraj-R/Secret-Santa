@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const https = require('https');
+const fs = require('fs');
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -26,17 +28,24 @@ app.use((req, res, next) => {
 // middleware: use assignmentRoutes for routing
 app.use("/api/assignments", assignmentRoutes);
 
+var key = fs.readFileSync('./selfsigned.key');
+var cert = fs.readFileSync('./selfsigned.crt');
+var credentials = {
+  key: key,
+  cert: cert
+};
+
+const httpsServer = https.createServer(credentials, app);
+
 // connect to db
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     // listen for requests, (port number, corresponding function)
-    app.listen(process.env.PORT, () => {
+    httpsServer.listen(process.env.PORT, () => {
       console.log("connected to db, and listening on port ", process.env.PORT);
     });
   })
   .catch((error) => {
     console.log(error);
   });
-
-  //sendEmail();
