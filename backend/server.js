@@ -28,8 +28,8 @@ app.use((req, res, next) => {
 // middleware: use assignmentRoutes for routing
 app.use("/api/assignments", assignmentRoutes);
 
-var key = fs.readFileSync('./selfsigned.key');
-var cert = fs.readFileSync('./selfsigned.crt');
+var key = fs.readFileSync('/etc/letsencrypt/live/secret-santa-generator.net/privkey.pem');
+var cert = fs.readFileSync('/etc/letsencrypt/live/secret-santa-generator.net/fullchain.pem');
 var credentials = {
   key: key,
   cert: cert
