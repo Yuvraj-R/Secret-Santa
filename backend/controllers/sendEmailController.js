@@ -11,7 +11,7 @@ const sendEmailFacilitator = async (req, res) => {
           });
     }
 
-    emailTemplates.forEach(async (element) => {
+    emailTemplates.forEach((element) => {
         const { email, to } = element;
         const message = "Your Secret Santa Assignment is: " + to + ". Organized by: " + organizerName + ".";
         if(additionalMessage){
