@@ -1,36 +1,42 @@
-const sendEmail = require("./sendEmail")
+const sendEmail = require("./sendEmail");
 
 const sendEmailFacilitator = async (req, res) => {
-    // emailTemplates should be an array of {to, emailTo} objects
-    const { subject, additionalMessage, emailTemplates, organizerName} = req.body;
+    const { subject, additionalMessage, emailTemplates, organizerName } = req.body;
 
-    // note message is optional
-    if (!subject || !emailTemplates || !organizerName){
+    if (!subject || !emailTemplates || !organizerName) {
         return res.status(400).json({
-            error: "One or more sendEmailFacilitator() fields is missing",
-          });
+            error: "One or more sendEmailFacilitator() fields are missing",
+        });
     }
 
-    emailTemplates.forEach((element) => {
-        const { email, to } = element;
-        const message = "Your Secret Santa Assignment is: " + to + ". Organized by: " + organizerName + ".";
-        if(additionalMessage){
-            message += " Message from organizer: " + additionalMessage;
+    // Function to send emails with a delay between each
+    const sendEmailsWithDelay = async () => {
+        for (const element of emailTemplates) {
+            const { email, to } = element;
+            let message = `Your Secret Santa Assignment is: ${to}. Organized by: ${organizerName}.`;
+            if (additionalMessage) {
+                message += ` Message from organizer: ${additionalMessage}`;
+            }
+
+            // Wait for 200 ms before sending the next email
+            await new Promise(resolve => setTimeout(resolve, 200));
+
+            try {
+                const response = await sendEmail(email, subject, message);
+                // Handle the response if needed
+            } catch (error) {
+                console.error("Error sending email:", error);
+                // Handle the error, e.g., log it or mark the email as failed
+            }
         }
+    };
 
-        // wait 200 ms to send emails
-        setTimeout(() => {
-            sendEmail(email, subject, message);
-        }, 1000);
+    // Call the function to send emails with delay
+    await sendEmailsWithDelay();
 
+    return res.status(200).json({
+        success: true,
     });
+};
 
-    /*
-    For each emailTemplate, call sendEmail(emailTo, "Your Secret Santa Assignment", message)
-    Return status code 400 if any of them do not return a response for an email
-    */
-
-    return res.status(200)
-}
-
-module.exports = {sendEmailFacilitator};
+module.exports = { sendEmailFacilitator };
