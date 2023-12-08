@@ -17,7 +17,7 @@ const sendEmailFacilitator = async (req, res) => {
         if(additionalMessage){
             message += " Message from organizer: " + additionalMessage;
         }
-        const response = await sendEmail(email, subject, message)
+        const response = sendEmail(email, subject, message)
     });
 
     /*
