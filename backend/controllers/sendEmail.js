@@ -22,7 +22,7 @@ const sendEmail = async (emailTo, subject, message) => {
     });
 
     const info = await transporter.sendMail({
-      from: '"Secret Santa" <santa.generator2023@gmail.com>',
+      from: '"Secret Santa" <santa@secret-santa-generator.net>',
       to: emailTo,
       subject: subject,
       text: message,
