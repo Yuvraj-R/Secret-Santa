@@ -21,7 +21,7 @@ const sendEmailFacilitator = async (req, res) => {
         // wait 200 ms to send emails
         setTimeout(() => {
             sendEmail(email, subject, message);
-        }, 200);
+        }, 1000);
 
     });
 
