@@ -18,7 +18,9 @@ const sendEmailFacilitator = async (req, res) => {
             message += " Message from organizer: " + additionalMessage;
         }
         sleep(200);
-        const response = sendEmail(email, subject, message)
+
+        // wait 200 ms to send emails
+        setTimeout(sendEmail(email, subject, message), 200);
     });
 
     /*
